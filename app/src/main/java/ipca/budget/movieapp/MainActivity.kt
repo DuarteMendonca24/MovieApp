@@ -108,11 +108,14 @@ class MainActivity : AppCompatActivity() {
                     var title : String? = movies[position].title
                     var imdb : String? = movies[position].url
                     var picture : String? = movies[position].urlToImage
+                    var user  = intent.getStringExtra("user")
 
                     val favourites: MutableMap<String, Any> = HashMap()
                     favourites["Title"] = title.toString()
                     favourites["Imdb"] = imdb.toString()
                     favourites["Picture"] = picture.toString()
+                    favourites["User"] = user.toString()
+
                     fireStoreDatabase.collection("Favourites").document(movies[position].title.toString())
                         .set(favourites)
                        // .addOnSuccessListener {

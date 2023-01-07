@@ -1,5 +1,7 @@
 package ipca.budget.movieapp
 
+
+import com.google.firebase.auth.FirebaseAuth
 import org.json.JSONObject
 
 class MovieandSeries {

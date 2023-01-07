@@ -102,12 +102,6 @@ class Favorites : AppCompatActivity() {
             toggleButton.setOnCheckedChangeListener { _, isChecked ->
                 favourites[position].isFavourite = isChecked
 
-              // if(favourites[position].isFavourite == false){
-              //     fireStoreDatabase.collection("Favourites").document("UP").delete()
-              //         .addOnSuccessListener{Log.d(TAG,"DocumentSnapshot successfully deleted!")}
-              //         .addOnSuccessListener{e->Log.w(TAG,"Error deleting document")}
-              //
-              // }
 
                  fireStoreDatabase.collection("Favourites").document(favourites[position].title.toString())
                     .delete()

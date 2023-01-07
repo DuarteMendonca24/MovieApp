@@ -9,12 +9,14 @@ class MovieandSeries {
     var url         : String? = null
     var urlToImage  : String? = null
     var isFavourite = false
+    var user  : String? = null
 
     fun toJSON() : JSONObject {
         val jsonObject = JSONObject()
         jsonObject.put("name"      , title      )
         jsonObject.put("url", url )
         jsonObject.put("urlToImage" , urlToImage )
+
 
         return jsonObject
     }

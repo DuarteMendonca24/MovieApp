@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.ArrayList
 
@@ -108,7 +109,10 @@ class MainActivity : AppCompatActivity() {
                     var title : String? = movies[position].title
                     var imdb : String? = movies[position].url
                     var picture : String? = movies[position].urlToImage
-                    var user  = intent.getStringExtra("user")
+                    lateinit var firebaseAuth: FirebaseAuth
+                    firebaseAuth = FirebaseAuth.getInstance()
+                    val user : String? = firebaseAuth.currentUser?.email
+                   // var user  = intent.getStringExtra("user",userName.toString())
 
                     val favourites: MutableMap<String, Any> = HashMap()
                     favourites["Title"] = title.toString()

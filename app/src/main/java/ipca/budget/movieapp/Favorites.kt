@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.lifecycleScope
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class Favorites : AppCompatActivity() {
@@ -33,14 +34,21 @@ class Favorites : AppCompatActivity() {
                         result.append(document.data.getValue("Title")).append("\n")
                             .append(document.data.getValue("Imdb")).append("\n")
                             .append(document.data.getValue("Picture")).append("\n")
+                            .append(document.data.getValue("User")).append("\n")
 
                     var arrayResult = result.split("\n")
-                    for(i in 0..arrayResult.size - 2 step 3) {
+                    for(i in 0..arrayResult.size - 2 step 4) {
                         var movie = MovieandSeries()
                         movie.title = arrayResult[i]
                         movie.url = arrayResult[i + 1]
                         movie.urlToImage = arrayResult[i + 2]
-                        favourites.add(movie)
+                        movie.user = arrayResult[i + 3]
+                        lateinit var firebaseAuth: FirebaseAuth
+                        firebaseAuth = FirebaseAuth.getInstance()
+                        if(movie.user == firebaseAuth.currentUser?.email){
+                            favourites.add(movie)
+                        }
+
                     }
                 }
                 findViewById<ListView>(R.id.FavouritesList).adapter = adapter

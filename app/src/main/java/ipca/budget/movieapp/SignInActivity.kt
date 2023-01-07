@@ -59,7 +59,6 @@ class SignInActivity : AppCompatActivity() {
         val userName : String? = firebaseAuth.currentUser?.email
         if(firebaseAuth.currentUser != null){
             val intent = Intent(this,MainActivity::class.java)
-            intent.putExtra("user", userName.toString() )
             startActivity(intent)
         }
     }

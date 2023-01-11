@@ -6,9 +6,6 @@
         android:title="Search Page"
         app:showAsAction="never" />
     <item
-        android:id="@+id/wishlist"
-        android:title="Wishlist" />
-    <item
         android:id="@+id/favourites"
         android:title="Favourites" />
 </menu>

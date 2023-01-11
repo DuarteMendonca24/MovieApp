@@ -37,15 +37,16 @@ class Favorites : AppCompatActivity() {
                             .append(document.data.getValue("User")).append("\n")
 
                     var arrayResult = result.split("\n")
-                    for(i in 0..arrayResult.size - 2 step 4) {
+                    for (i in 0..arrayResult.size - 2 step 4) {
                         var movie = MovieandSeries()
+                        movie.isFavourite = true
                         movie.title = arrayResult[i]
                         movie.url = arrayResult[i + 1]
                         movie.urlToImage = arrayResult[i + 2]
                         movie.user = arrayResult[i + 3]
                         lateinit var firebaseAuth: FirebaseAuth
                         firebaseAuth = FirebaseAuth.getInstance()
-                        if(movie.user == firebaseAuth.currentUser?.email){
+                        if (movie.user == firebaseAuth.currentUser?.email) {
                             favourites.add(movie)
                         }
 
@@ -53,6 +54,7 @@ class Favorites : AppCompatActivity() {
                 }
                 findViewById<ListView>(R.id.FavouritesList).adapter = adapter
             }
+
 
     }
 
@@ -70,18 +72,12 @@ class Favorites : AppCompatActivity() {
                 return true
             }
 
-            R.id.wishlist -> {
-                val intent = Intent(this@Favorites, Wishlist::class.java)
-                startActivity(intent)
-                return true
-            }
 
             else -> {
                 return false
             }
         }
     }
-
 
 
     inner class MovieAdapter : BaseAdapter() {
@@ -103,21 +99,27 @@ class Favorites : AppCompatActivity() {
             val textViewMovieTitle = rootView.findViewById<TextView>(R.id.MovieTitle)
             val imageViewMovieImage = rootView.findViewById<ImageView>(R.id.MovieImage)
             val toggleButton = rootView.findViewById<ToggleButton>(R.id.favbutton);
-
+            toggleButton.isChecked = true
             textViewMovieTitle.text = favourites[position].title
-            favourites[position].isFavourite = intent.getBooleanExtra("isfavourite", true)
+            //favourites[position].isFavourite = intent.getBooleanExtra("isfavourite", true)
 
             toggleButton.setOnCheckedChangeListener { _, isChecked ->
                 favourites[position].isFavourite = isChecked
 
-
-                 fireStoreDatabase.collection("Favourites").document(favourites[position].title.toString())
-                    .delete()
-                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
-                    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
-                     favourites.remove(favourites[position])
-                     notifyDataSetChanged()
-
+               if(favourites[position].isFavourite == false) {
+                   fireStoreDatabase.collection("Favourites")
+                       .document(favourites[position].title.toString())
+                       .delete()
+                       .addOnSuccessListener {
+                           Log.d(
+                               TAG,
+                               "DocumentSnapshot successfully deleted!"
+                           )
+                       }
+                       .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+                   favourites.remove(favourites[position])
+                   notifyDataSetChanged()
+               }
 
 
             }

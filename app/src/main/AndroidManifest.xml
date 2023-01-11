@@ -15,6 +15,13 @@
         android:theme="@style/Theme.MovieApp"
         tools:targetApi="31">
         <activity
+            android:name=".Recommendation"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MovieSeriesDetail"
             android:exported="false">
             <meta-data
@@ -37,13 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Wishlist"
-            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

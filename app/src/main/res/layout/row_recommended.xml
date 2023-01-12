@@ -13,6 +13,7 @@
         android:layout_width="140dp"
         android:layout_height="121dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/MovieTitletwo"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +48,7 @@
         android:textOn=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toEndOf="@+id/MovieImagetwo"
         app:layout_constraintTop_toBottomOf="@+id/MovieTitletwo"
         app:layout_constraintVertical_bias="0.818" />
@@ -58,10 +59,21 @@
         android:layout_height="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.694"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toEndOf="@+id/MovieImagetwo"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.898"
+        app:layout_constraintVertical_bias="0.848"
         app:srcCompat="@android:drawable/ic_menu_send" />
+
+    <ImageButton
+        android:id="@+id/Deletebtn"
+        android:layout_width="45sp"
+        android:layout_height="42sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.397"
+        app:layout_constraintStart_toEndOf="@+id/sendButtontwo"
+        app:layout_constraintTop_toBottomOf="@+id/MovieTitletwo"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

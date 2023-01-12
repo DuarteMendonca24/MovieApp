@@ -8,4 +8,7 @@
     <item
         android:id="@+id/favourites"
         android:title="Favourites" />
+    <item
+        android:id="@+id/recommended"
+        android:title="Recommended" />
 </menu>

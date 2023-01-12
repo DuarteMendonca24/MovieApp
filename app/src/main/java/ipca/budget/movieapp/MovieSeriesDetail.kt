@@ -11,7 +11,7 @@ import org.json.JSONObject
 
 class MovieSeriesDetail : AppCompatActivity() {
 
-   var movieImdb : String? = null
+    var movieImdb : String? = null
 
     var webView : WebView? = null
 
